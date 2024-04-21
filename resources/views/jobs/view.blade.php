@@ -1,6 +1,5 @@
 <x-app-layout :meta-title="$job->title" :meta-description="$job->description">
     <div class="flex">
-        <!-- job Section -->
         <section class="w-full md:w-2/3 flex flex-col px-3">
 
             <article class="flex flex-col shadow my-4">
