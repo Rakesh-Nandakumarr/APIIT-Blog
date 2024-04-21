@@ -86,7 +86,7 @@
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <div class="flex gap-2">
-                                @if (Auth::user()->hasRole('admin'))
+                                @if (Auth::user()->usertype == 'admin')
                                 <a href="/admin" class="bg-teal-600 text-white rounded py-2 px-4 mx-2">admin dashboard</a>
                                 @endif
                                 <button
