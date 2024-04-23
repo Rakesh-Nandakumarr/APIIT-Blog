@@ -19,7 +19,6 @@ class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
 
-    protected static ?string $navigationGroup = 'Testimonial';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -54,8 +53,9 @@ class PostResource extends Resource
                         Forms\Components\Select::make('categories')
                             ->multiple()
                             ->relationship('categories', 'title')
-                            ->default(1),
+                            ->default('alumni'),
                         // make the category set to alumni testimonial by default
+
 
                     ])->columnSpan(4)
             ])->columns(12);
@@ -113,5 +113,10 @@ class PostResource extends Resource
         return parent::getEloquentQuery()
 
             ->where('user_id', auth()->user()->id);
+    }
+
+    public static function getLabel(): string
+    {
+        return 'Testimonials';
     }
 }

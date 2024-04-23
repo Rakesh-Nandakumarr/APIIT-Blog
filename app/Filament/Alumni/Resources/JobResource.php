@@ -113,4 +113,9 @@ class JobResource extends Resource
 
             ->where('user_id', auth()->user()->id);
     }
+
+    public static function getLabel(): string
+    {
+        return 'Job posts';
+    }
 }
