@@ -53,9 +53,6 @@ class PostResource extends Resource
                         Forms\Components\Select::make('categories')
                             ->multiple()
                             ->relationship('categories', 'title')
-                            ->default('alumni'),
-                        // make the category set to alumni testimonial by default
-
 
                     ])->columnSpan(4)
             ])->columns(12);
