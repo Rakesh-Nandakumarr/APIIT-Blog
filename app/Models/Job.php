@@ -19,6 +19,7 @@ class Job extends Model
         'qualifications',
         'link',
         'active',
+        'contact',
         'reason',
         'published_at',
         'user_id'

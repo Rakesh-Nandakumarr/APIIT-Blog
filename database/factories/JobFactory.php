@@ -24,6 +24,7 @@ class JobFactory extends Factory
             'description' => fake()->realText(3000),
             'company' => $this->faker->company(),
             'qualifications' => fake()->realText(3000),
+            'contact' => fake()->realText(500),
             'link' => $this->faker->url(),
             'active' => fake()->boolean,
             'published_at' => fake()->dateTime,

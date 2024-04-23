@@ -43,6 +43,10 @@ class JobResource extends Resource
                             ->required(),
                         Forms\Components\RichEditor::make('qualifications')
                             ->required(),
+                        Forms\Components\RichEditor::make('contact')
+                            ->required()
+                            ->label('Contact Info'),
+
                         Forms\Components\TextInput::make('link')
                             ->required(),
                         Forms\Components\DateTimePicker::make('published_at'),
@@ -64,7 +68,7 @@ class JobResource extends Resource
                 Tables\Columns\IconColumn::make('active')
                     ->sortable()
                     ->boolean(),
-                Tables\Columns\TextColumn::make('Reason')
+                Tables\Columns\TextColumn::make('reason')
                     ->label('Reason of Inactive'),
                 Tables\Columns\TextColumn::make('published_at')
                     ->sortable()
