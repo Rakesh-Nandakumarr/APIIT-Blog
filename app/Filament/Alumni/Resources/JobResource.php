@@ -43,9 +43,6 @@ class JobResource extends Resource
                             ->required(),
                         Forms\Components\RichEditor::make('qualifications')
                             ->required(),
-                        Forms\Components\RichEditor::make('contact')
-                            ->required()
-                            ->label('Contact Info'),
 
                         Forms\Components\TextInput::make('link')
                             ->required(),
