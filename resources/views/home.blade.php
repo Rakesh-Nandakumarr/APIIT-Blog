@@ -1,9 +1,12 @@
 <x-app-layout meta-title="Apiit Blog"
               meta-description="This is the official blog site of APIIT univerity">
-
-    <div class="max-w-screen-xl mx-auto">
-        {{$alumni_msg ?? ''}}
+@auth()
+@if (auth()->user()->active == 0)
+    <div class="bg-red-500 text-white p-4 text-center">
+        Your account is not active. Please you will be allowed the full features after approval.
     </div>
+@endif
+@endAuth
     <!-- This is an example component -->
 <div class="max-w-screen-xl mx-auto">
 
