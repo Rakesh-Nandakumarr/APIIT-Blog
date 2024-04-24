@@ -3,8 +3,10 @@
 namespace App\Filament\Alumni\Resources\PostResource\Pages;
 
 use App\Filament\Alumni\Resources\PostResource;
+use App\Models\Category;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Support\Str;
 
 class CreatePost extends CreateRecord
 {
@@ -12,8 +14,22 @@ class CreatePost extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
+        $data['slug'] = Str::slug($data['title']);
         $data['active'] = false;
         $data['user_id'] = auth()->id();
         return $data;
+    }
+
+    public function mount(): void
+    {
+        // Get the 'Alumni testimonial' category
+        $category = Category::where('title', 'Alumni testimonial')->first();
+
+        // Set the 'categories' attribute of the Post model instance to the ID of the 'Alumni testimonial' category
+        if ($category) {
+            $this->record->categories = [$category->id];
+        }
+
+        parent::mount();
     }
 }

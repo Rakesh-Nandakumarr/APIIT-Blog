@@ -20,7 +20,8 @@ return new class extends Migration
             $table->longText('description');
             $table->string('company', 2048);
             $table->longText('qualifications');
-            $table->longText('contact')->nullable();
+            $table->longText('contact');
+            $table->string('faculty');
             $table->string('reason')->default("waitng for approval");
             $table->string('link', 2048);
             $table->boolean('active')->default(false);

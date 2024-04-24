@@ -12,7 +12,6 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Str;
 
 class JobResource extends Resource
 {
@@ -28,20 +27,22 @@ class JobResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('title')
                             ->required()
-                            ->maxLength(2048)
-                            ->reactive()
-                            ->afterStateUpdated(function (\Filament\Forms\Set $set, $state) {
-                                $set('slug', Str::slug($state));
-                            }),
-                        Forms\Components\TextInput::make('slug')
-                            ->required()
                             ->maxLength(2048),
+
                         Forms\Components\TextInput::make('company')
                             ->required()
                             ->maxLength(2048),
                         Forms\Components\RichEditor::make('description')
                             ->required(),
                         Forms\Components\RichEditor::make('qualifications')
+                            ->required(),
+                        Forms\Components\Select::make('faculty')
+                            ->options([
+                                'computing' => 'Computing',
+                                'business' => 'Business',
+                                'law' => 'Law',
+                            ]),
+                        Forms\Components\RichEditor::make('contact')
                             ->required(),
 
                         Forms\Components\TextInput::make('link')
@@ -67,11 +68,14 @@ class JobResource extends Resource
                     ->boolean(),
                 Tables\Columns\TextColumn::make('reason')
                     ->label('Reason of Inactive'),
+                Tables\Columns\TextColumn::make('faculty')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('published_at')
                     ->sortable()
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
+                    ->dateTime()
+                    ->sortable(),
             ])
             ->filters([
                 Tables\Filters\TernaryFilter::make('active')

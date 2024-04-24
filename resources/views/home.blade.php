@@ -138,7 +138,7 @@
         </div>
         @Auth
         @if (auth()->user()->levelofstudy == 'second year')
-        <div class="mb-8">
+                <div class="mb-8">
             <h2 class="text-lg sm:text-xl font-bold text-teal-500 uppercase pb-1 border-b-2 border-red-500 mb-3">
                 Job Posts
             </h2>

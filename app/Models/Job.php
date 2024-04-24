@@ -20,6 +20,7 @@ class Job extends Model
         'link',
         'active',
         'contact',
+        'faculty',
         'reason',
         'published_at',
         'user_id'
@@ -33,6 +34,12 @@ class Job extends Model
 
         return '/storage/' . $this->thumbnail;
     }
+
+    public function hasThumbnail(): bool
+    {
+        return (bool) $this->thumbnail;
+    }
+
 
     public function shortBody($words = 30): string
     {

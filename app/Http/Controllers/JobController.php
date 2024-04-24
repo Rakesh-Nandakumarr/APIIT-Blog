@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class JobController extends Controller
@@ -14,7 +15,11 @@ class JobController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+
+        // Get the jobs that are active and match the faculty of the currently authenticated user
         $jobpost = Job::where('active', '=', 1)
+            ->where('faculty', $user->facultyofstudy)
             ->get();
 
         return view('jobs.index',compact('jobpost'));

@@ -24,12 +24,13 @@ class JobFactory extends Factory
             'description' => fake()->realText(3000),
             'company' => $this->faker->company(),
             'qualifications' => fake()->realText(3000),
+            'faculty' => $this->faker->randomElement(['computing', 'business', 'law']),
             'contact' => fake()->realText(500),
             'link' => $this->faker->url(),
-            'active' => fake()->boolean,
+            'active' => true,
             'published_at' => fake()->dateTime,
             'user_id' => 1,
-            
+
         ];
     }
 }

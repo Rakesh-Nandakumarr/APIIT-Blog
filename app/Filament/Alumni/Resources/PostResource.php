@@ -30,13 +30,6 @@ class PostResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('title')
                             ->required()
-                            ->maxLength(2048)
-                            ->reactive()
-                            ->afterStateUpdated(function (\Filament\Forms\Set $set, $state) {
-                                $set('slug', Str::slug($state));
-                            }),
-                        Forms\Components\TextInput::make('slug')
-                            ->required()
                             ->maxLength(2048),
                         Forms\Components\RichEditor::make('body')
                             ->required(),
@@ -49,10 +42,7 @@ class PostResource extends Resource
 
                 Forms\Components\Card::make()
                     ->schema([
-                        Forms\Components\FileUpload::make('thumbnail'),
-                        Forms\Components\Select::make('categories')
-                            ->multiple()
-                            ->relationship('categories', 'title')
+                        Forms\Components\FileUpload::make('thumbnail')
 
                     ])->columnSpan(4)
             ])->columns(12);

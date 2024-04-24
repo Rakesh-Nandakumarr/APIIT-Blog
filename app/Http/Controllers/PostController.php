@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\PostView;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -21,9 +22,15 @@ class PostController extends Controller
     public function home(): View
     {
 
+        // Get the currently authenticated user
+        $user = Auth::user();
+
+        // Get the jobs that are active and match the faculty of the currently authenticated user
         $jobpost = Job::where('active', '=', 1)
+            ->where('faculty', $user->faculty)
             ->limit(4)
             ->get();
+
 
 
         // Latest post
@@ -147,12 +154,6 @@ class PostController extends Controller
     }
 
 
-    // public function jobsshow(Post $post, Request $request)
-    // {
-    //     if (!$post->active) {
-    //         throw new NotFoundHttpException();
-    //     }
-    // }
     /**
      * Display the specified resource.
      */
