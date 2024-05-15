@@ -8,6 +8,7 @@ use App\Models\Post;
 use Closure;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Tables;
@@ -39,10 +40,12 @@ class PostResource extends Resource
                 Forms\Components\Textarea::make('meta_description')
                     ->maxLength(255),
                 Forms\Components\Toggle::make('active')
-                    ->required(),
+                    ->required()
+                    ->live(),
                 Forms\Components\Textarea::make('reason')
                     ->label('Inactive Comment')
-                    ->Placeholder('if the post is not active, Write the for why the post is not active ')
+                    ->hidden(fn (Get $get): bool => $get ('reason') === true)
+                    ->Placeholder('Write the for why the post is not active ')
                     ->maxLength(255),
                 Forms\Components\DateTimePicker::make('published_at'),
                 ])->columnSpan(8),

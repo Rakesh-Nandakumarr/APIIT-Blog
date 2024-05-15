@@ -148,7 +148,6 @@ class PostController extends Controller
             ->limit(5)
             ->get();
 
-
         return view('home', compact(
             'latestPost',
             'popularPosts',

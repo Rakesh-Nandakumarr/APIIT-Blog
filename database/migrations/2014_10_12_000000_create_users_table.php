@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('identity')->unique()->nullable();
             $table->string('levelofstudy')->nullable();
             $table->string('facultyofstudy')->nullable();
+            $table->string('stafftype')->nullable();
             $table->boolean('active');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

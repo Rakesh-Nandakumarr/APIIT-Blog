@@ -10,11 +10,6 @@ class SiteController extends Controller
 {
     public function about(): View
     {
-        $widget = TextWidget::query()
-            ->where('key', '=', 'about-page')
-            ->where('active', '=', 1)
-            ->first();
-
-        return view('about', compact('widget'));
+        return view('about');
     }
 }

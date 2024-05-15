@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('text_widgets', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique();
-            $table->string('image', 255)->nullable();
-            $table->string('title', 255)->nullable();
-            $table->longText('content')->nullable();
-            $table->boolean('active');
             $table->timestamps();
+            $table->string('title');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
+            $table->boolean('active')->default(false);
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('text_widgets');
+        Schema::dropIfExists('events');
     }
 };

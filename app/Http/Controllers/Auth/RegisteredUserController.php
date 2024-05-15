@@ -58,8 +58,10 @@ class RegisteredUserController extends Controller
                 break;
             case 'apiit staff':
                 $request->validate([
-                    'email' => ['required', 'string', 'email', 'max:255', new AllowedEmailDomain, 'unique:'.User::class]
+                    'email' => ['required', 'string', 'email', 'max:255', new AllowedEmailDomain, 'unique:'.User::class],
+                    'stafftype' => ['required'],
                 ]);
+                $user->stafftype = $request->input('stafftype');
                 $user->email = $request->input('email');
                 $user->active = true;
                 break;

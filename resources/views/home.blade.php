@@ -77,7 +77,7 @@
 </div>
 
     <div class="container max-w-4xl mx-auto py-6">
-
+    
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <!-- Latest Post -->
             <div class="col-span-2">
@@ -175,4 +175,5 @@
         @endforeach
 
     </div>
+        
 </x-app-layout>

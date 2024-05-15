@@ -29,6 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail/*, FilamentUser*/
         'identity',
         'levelofstudy',
         'facultyofstudy',
+        'stafftype',
         'active',
     ];
 

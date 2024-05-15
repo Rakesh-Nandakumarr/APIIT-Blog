@@ -196,7 +196,9 @@ return [
         App\Providers\Filament\AdminPanelProvider::class,
         App\Providers\Filament\UserPanelProvider::class,
         App\Providers\Filament\AlumniPanelProvider::class,
+        App\Providers\Filament\CalendarPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\VoltServiceProvider::class,
 
     ],
 

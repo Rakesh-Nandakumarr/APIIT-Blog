@@ -11,6 +11,9 @@
             transition: all 0.4s;
         }
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.css" rel="stylesheet" />
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
             integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
@@ -51,7 +54,7 @@
                 @if (sizeof($categories) > 2)
                 <div class="relative inline-block text-left">
             <button id="dropdown-button" class="inline-flex justify-center hover:bg-teal-600 hover:text-white rounded py-2 px-4 mx-2">
-                CATEGORIES
+               BLOG CATEGORIES
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path fill-rule="evenodd" d="M6.293 9.293a1 1 0 011.414 0L10 11.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
@@ -71,6 +74,8 @@
                        class="hover:bg-teal-600 hover:text-white rounded py-2 px-4 mx-2">{{$category->title}}</a>
                 @endforeach
                 @endif
+                <a href="/Testimonials" class="hover:bg-teal-600 hover:text-white rounded py-2 px-4 mx-2">Alumni</a>
+                <a href="/events" class="hover:bg-teal-600 hover:text-white rounded py-2 px-4 mx-2">Events Calendar</a>
                 <a href="{{route('about-us')}}" class="hover:bg-teal-600 hover:text-white rounded py-2 px-4 mx-2">About
                     us</a>
             </div>
@@ -246,5 +251,9 @@
 
 
     </script>
+    @stack('scripts')
+
+    
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
 </body>
 </html>

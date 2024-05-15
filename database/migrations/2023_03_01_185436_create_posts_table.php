@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 2048);
-            $table->string('slug', 2048)->unique();
-            $table->string('thumbnail', 2048)->nullable();
+            $table->string('title', 255);
+            $table->string('slug', 255)->unique();
+            $table->string('thumbnail', 255)->nullable();
             $table->longText('body');
             $table->boolean('active')->default(false);
             $table->string('reason')->default("waiting for approval");

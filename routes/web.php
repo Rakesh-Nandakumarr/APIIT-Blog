@@ -6,6 +6,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\ProfileController;
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestimonialController;
 
 /*
 |---------------------------------------------------------------------------
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |---------------------------------------------------------------------------
 */
+
+Route::get('/events', \App\Http\Controllers\HomeController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -29,10 +32,10 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::resource('/jobs', JobController::class);
+Route::resource('/Testimonials', TestimonialController::class);
 Route::get('/', [PostController::class, 'home'])->name('home');
 Route::get('/search', [PostController::class, 'search'])->name('search');
 Route::get('/about-us', [SiteController::class, 'about'])->name('about-us');
 Route::get('/category/{category:slug}', [PostController::class, 'byCategory'])->name('by-category');
-Route::resource('/jobs', JobController::class);
 Route::get('/{post:slug}', [PostController::class, 'show'])->name('view');
-

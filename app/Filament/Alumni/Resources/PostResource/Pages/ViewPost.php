@@ -12,8 +12,13 @@ class ViewPost extends ViewRecord
 
     protected function getHeaderActions(): array
     {
-        return [
-            Actions\EditAction::make(),
-        ];
+        if ($this->record->active == false) {
+            return [
+                Actions\EditAction::make(),
+                Actions\DeleteAction::make(),
+            ];
+        }
+        return [];
     }
+
 }
