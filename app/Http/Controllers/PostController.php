@@ -47,15 +47,15 @@ class PostController extends Controller
 
         // Show the most popular 3 posts based on upvotes
         $popularPosts = Post::query()
-            ->leftJoin('upvote_downvotes', 'posts.id', '=', 'upvote_downvotes.post_id')
-            ->select('posts.*', DB::raw('COUNT(upvote_downvotes.id) as upvote_count'))
-            ->where(function ($query) {
-                $query->whereNull('upvote_downvotes.is_upvote')
-                    ->orWhere('upvote_downvotes.is_upvote', '=', 1);
-            })
+            // ->leftJoin('upvote_downvotes', 'posts.id', '=', 'upvote_downvotes.post_id')
+            // ->select('posts.*', DB::raw('COUNT(upvote_downvotes.id) as upvote_count'))
+            // ->where(function ($query) {
+            //     $query->whereNull('upvote_downvotes.is_upvote')
+            //         ->orWhere('upvote_downvotes.is_upvote', '=', 1);
+            // })
             ->where('active', '=', 1)
             ->whereDate('published_at', '<', Carbon::now())
-            ->orderByDesc('upvote_count')
+            // ->orderByDesc('upvote_count')
             ->groupBy([
                 'posts.id',
                 'posts.title',

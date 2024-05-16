@@ -15,5 +15,21 @@ class Event extends Model
         'end_date',
         'active'
     ];
+
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+    ];
+
+    public function toArray()
+    {
+
+        return [
+            'title' => $this->title,
+    
+            'start' => $this->start_date->toISOString(),
+            'end' => $this->end_date->toISOString()
+        ];
+    }
     
 }

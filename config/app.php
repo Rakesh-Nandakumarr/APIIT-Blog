@@ -199,6 +199,7 @@ return [
         App\Providers\Filament\CalendarPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\VoltServiceProvider::class,
+        Usamamuneerchaudhary\Commentify\Providers\CommentifyServiceProvider::class,
 
     ],
 

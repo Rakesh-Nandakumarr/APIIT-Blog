@@ -28,15 +28,7 @@ class PostResource extends Resource
                 Forms\Components\Card::make()
                     ->schema([
                         Forms\Components\TextInput::make('title')
-                            ->required()
-                            ->maxLength(2048)
-                            ->reactive()
-                            ->afterStateUpdated(function (\Filament\Forms\Set $set, $state) {
-                                $set('slug', Str::slug($state));
-                            }),
-                        Forms\Components\TextInput::make('slug')
-                            ->required()
-                            ->maxLength(2048),
+                            ->required(),
                         Forms\Components\RichEditor::make('body')
                             ->required(),
                         Forms\Components\TextInput::make('meta_title')

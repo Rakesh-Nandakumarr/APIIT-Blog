@@ -27,7 +27,7 @@
                         {!! $post->body !!}
                     </div>
 
-                    <livewire:upvote-downvote :post="$post"/>
+                    <livewire:like-button :key="$post->id" :$post />
                 </div>
             </article>
 
@@ -59,7 +59,7 @@
                 </div>
             </div>
 
-            <livewire:comments :post="$post"/>
+            <livewire:comments :model="$post"/>
         </section>
 
         <x-sidebar/>

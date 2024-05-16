@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Usamamuneerchaudhary\Commentify\Traits\Commentable;
 
 class Post extends Model
 {
-    use softDeletes;
-    use HasFactory;
+    use softDeletes, HasFactory, Commentable;
 
     protected $fillable = ['title', 'slug', 'thumbnail', 'body', 'user_id', 'active', 'reason', 'published_at', 'meta_title', 'meta_description'];
 
@@ -61,6 +61,11 @@ class Post extends Model
                     . $words . ' ' . str('word')->plural($words);
             }
         );
+    }
+
+        public function likes()
+    {
+        return $this->belongsToMany(User::class, 'post_like')->withTimestamps();
     }
 }
 
