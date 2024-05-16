@@ -24,8 +24,7 @@ class EventResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(2048),
+                    ->required(),
                 Forms\Components\DateTimePicker::make('start_date')
                     ->required()
                     ->label('Start Date & Time'),
@@ -41,23 +40,11 @@ class EventResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')->searchable(['title', 'start_date', 'end_date'])->sortable(),
-                Tables\Columns\IconColumn::make('active')
-                    ->sortable()
-                    ->boolean(),
                 Tables\Columns\TextColumn::make('start_date')->sortable(),
                 Tables\Columns\TextColumn::make('end_date')->sortable(),
             ])
             ->filters([
                 //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
             ]);
     }
 
@@ -73,7 +60,6 @@ class EventResource extends Resource
         return [
             'index' => Pages\ListEvents::route('/'),
             'create' => Pages\CreateEvent::route('/create'),
-            'edit' => Pages\EditEvent::route('/{record}/edit'),
         ];
     }
 }
