@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('title');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
-            $table->boolean('active')->default(false);
         });
     }
 

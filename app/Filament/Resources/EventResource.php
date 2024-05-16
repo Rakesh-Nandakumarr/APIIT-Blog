@@ -24,8 +24,7 @@ class EventResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(2048),
+                    ->required(),
                 Forms\Components\DateTimePicker::make('start_date')
                     ->required()
                     ->label('Start Date & Time'),
