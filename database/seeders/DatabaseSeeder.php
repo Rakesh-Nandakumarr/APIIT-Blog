@@ -17,17 +17,15 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\Post::factory(50)->create();
 
-        /** @var \App\Models\User $adminUser */
-        User::factory()->create([
+        $users = [
+        [
             'email' => 'admin@admin.lk',
             'name' => 'Admin',
             'password' => bcrypt('87654321'),
             'usertype' => 'admin',
             'active' => true
-        ]);
-
-        /** @var \App\Models\User $adminUser */
-        User::factory()->create([
+        ],
+        [
             'email' => 'student@students.apiit.lk',
             'name' => 'student',
             'password' => bcrypt('87654321'),
@@ -35,29 +33,27 @@ class DatabaseSeeder extends Seeder
             'levelofstudy' => 'second year',
             'facultyofstudy' => 'computing',
             'active' => true
-        ]);
-
-        User::factory()->create([
+        ],
+        [
             'email' => 'alumni@alumni.lk',
             'name' => 'alumni',
             'password' => bcrypt('87654321'),
             'usertype' => 'alumni',
             'active' => true
-        ]);
-
-        User::factory()->create([
+        ],
+        [
             'email' => 'apiitstaff@apiit.lk',
             'name' => 'apiit staff',
             'password' => bcrypt('87654321'),
             'usertype' => 'apiit staff',
             'Stafftype' => 'Apiit Management',
             'active' => true
-        ]);
-        
+        ]
+    ];
 
-
-        $adminRole = Role::create(['name' => 'admin']);
-        $adminUser->assignRole($adminRole);
+    foreach ($users as $user) {
+        User::factory()->create($user);
+    }
 
 //         \App\Models\User::factory(20)->create();
 
