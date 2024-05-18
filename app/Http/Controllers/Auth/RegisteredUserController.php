@@ -12,10 +12,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
-    /**
+    /*)*
      * Display the registration view.
      */
     public function create(): View
@@ -51,7 +52,7 @@ class RegisteredUserController extends Controller
                     'levelofstudy' => ['required'],
                     'facultyofstudy' => ['required']
                 ]);
-                $user->email = $request->input('email');
+                $user->email = Str::lower($request->input('email'));
                 $user->levelofstudy = $request->input('levelofstudy');
                 $user->facultyofstudy = $request->input('facultyofstudy');
                 $user->active = true;
@@ -62,7 +63,7 @@ class RegisteredUserController extends Controller
                     'stafftype' => ['required'],
                 ]);
                 $user->stafftype = $request->input('stafftype');
-                $user->email = $request->input('email');
+                $user->email = Str::lower($request->input('email'));
                 $user->active = true;
                 break;
             case 'alumni':
@@ -70,7 +71,7 @@ class RegisteredUserController extends Controller
                     'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
                     'identity' => [ 'required', 'string', 'max:255', 'unique:'.User::class]
                 ]);
-                $user->email = $request->input('email');
+                $user->email = Str::lower($request->input('email'));
                 $user->identity = $request->input('identity');
                 $user->active = false;
                 break;

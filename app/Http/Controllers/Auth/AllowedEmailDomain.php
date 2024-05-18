@@ -9,7 +9,7 @@ class AllowedEmailDomain implements Rule
 {
     public function passes($attribute, $value)
     {
-        return Str::endsWith($value, ['@students.apiit.lk', '@apiit.lk']);
+        return Str::endsWith(Str::lower($value), ['@students.apiit.lk', '@apiit.lk']);
     }
 
     public function message()
