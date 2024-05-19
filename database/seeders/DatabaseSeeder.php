@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
         [
             'email' => 'alumni@alumni.lk',
             'name' => 'alumni',
+            'identity' => '123456789V', 
             'password' => bcrypt('87654321'),
             'usertype' => 'alumni',
             'active' => true
