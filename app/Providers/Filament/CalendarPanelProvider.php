@@ -26,6 +26,7 @@ class CalendarPanelProvider extends PanelProvider
             ->id('calendar')
             ->path('calendar')
             ->brandName('Calendar')
+            ->darkMode(false)
 
             ->colors([
                 'primary' => Color::Teal,

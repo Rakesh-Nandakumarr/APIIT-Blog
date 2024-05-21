@@ -9,7 +9,7 @@ state([
 // dd(Event::All());
 
 mount(function(){
-    $this->events = (new Event())->get();
+    $this->events = (new Event())->where('active', 1)->get();
 });
 
 

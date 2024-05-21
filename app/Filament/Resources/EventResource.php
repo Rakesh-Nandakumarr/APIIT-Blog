@@ -17,9 +17,10 @@ class EventResource extends Resource
 {
     protected static ?string $model = Event::class;
 
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    
     protected static ?string $navigationGroup = 'Content';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -34,6 +35,8 @@ class EventResource extends Resource
                 Forms\Components\DateTimePicker::make('end_date')
                     ->required()
                     ->label('End Date & Time'),
+                Forms\Components\Toggle::make('active')
+                    ->required()
 
             ]);
     }
@@ -43,6 +46,9 @@ class EventResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')->searchable(['title', 'start_date', 'end_date'])->sortable(),
+                Tables\Columns\IconColumn::make('active')
+                    ->sortable()
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('start_date')->sortable(),
                 Tables\Columns\TextColumn::make('end_date')->sortable(),
             ])
