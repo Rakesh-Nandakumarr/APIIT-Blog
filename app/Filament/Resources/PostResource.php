@@ -44,8 +44,7 @@ class PostResource extends Resource
                     ->live(),
                 Forms\Components\Textarea::make('reason')
                     ->label('Inactive Comment')
-                    ->hidden(fn (Get $get): bool => $get ('reason') === true)
-                    ->Placeholder('Write the for why the post is not active ')
+                    // ->value('waiting for approval')
                     ->maxLength(255),
                 Forms\Components\DateTimePicker::make('published_at'),
                 ])->columnSpan(8),
@@ -72,6 +71,7 @@ class PostResource extends Resource
                     ->boolean(),
                 Tables\Columns\TextColumn::make('reason')
                     ->label('Reason of Inactive'),
+                    
                 Tables\Columns\TextColumn::make('published_at')
                     ->sortable()
                     ->dateTime(),

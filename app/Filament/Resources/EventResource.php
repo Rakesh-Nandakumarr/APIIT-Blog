@@ -17,6 +17,8 @@ class EventResource extends Resource
 {
     protected static ?string $model = Event::class;
 
+    protected static ?string $navigationGroup = 'Content';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -24,13 +26,15 @@ class EventResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('title')
-                    ->required(),
+                    ->required()
+                    ->maxLength(2048),
                 Forms\Components\DateTimePicker::make('start_date')
                     ->required()
                     ->label('Start Date & Time'),
                 Forms\Components\DateTimePicker::make('end_date')
                     ->required()
                     ->label('End Date & Time'),
+
             ]);
     }
 

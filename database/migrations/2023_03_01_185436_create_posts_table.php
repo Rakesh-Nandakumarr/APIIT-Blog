@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('thumbnail', 255)->nullable();
             $table->longText('body');
             $table->boolean('active')->default(false);
-            $table->string('reason')->default("waiting for approval");
+            $table->string('reason')->default("waiting for approval")->nullable();
             $table->datetime('published_at')->nullable();
             $table->foreignIdFor(\App\Models\User::class, 'user_id');
             $table->timestamps();

@@ -9,8 +9,14 @@ class LikeButton extends Component
 {
     public Post $post;
 
+    public int $like_count = 0;
 
-    public function toggleLike()
+
+    public function mount(){
+        $this->like_count = $this->post->likes()->count();
+    }
+
+    public function setLike()
     {
         if (auth()->guest()) {
             return $this->redirect(route('login'), true);
@@ -20,10 +26,13 @@ class LikeButton extends Component
 
         if ($user->hasLiked($this->post)) {
             $user->likes()->detach($this->post);
-            return;
+        }else{
+            $user->likes()->attach($this->post);
         }
 
-        $user->likes()->attach($this->post);
+        $this->like_count = (new Post())->find($this->post->id)->likes()->count();
+
+        return redirect($this->post->slug);
     }
 
     public function render()
