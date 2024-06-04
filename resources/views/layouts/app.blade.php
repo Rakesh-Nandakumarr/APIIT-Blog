@@ -11,14 +11,15 @@
             transition: all 0.4s;
         }
     </style>
-    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.css" rel="stylesheet" />
+
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
             integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 
     @livewireStyles
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.css" rel="stylesheet" />
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -75,7 +76,6 @@
                 @endforeach
                 @endif
                 <a href="/Testimonials" class="hover:bg-teal-600 hover:text-white rounded py-2 px-4 mx-2">Alumni</a>
-                <a href="/events" class="hover:bg-teal-600 hover:text-white rounded py-2 px-4 mx-2">Events Calendar</a>
                 <a href="{{route('about-us')}}" class="hover:bg-teal-600 hover:text-white rounded py-2 px-4 mx-2">About
                     us</a>
             </div>

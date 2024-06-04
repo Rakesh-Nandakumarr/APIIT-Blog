@@ -77,7 +77,8 @@
 </div>
 
     <div class="container max-w-4xl mx-auto py-6">
-    
+
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <!-- Latest Post -->
             <div class="col-span-2">
@@ -124,8 +125,13 @@
             </div>
         </div>
 
+
+        <!-- calender -->
+        @livewire('calendar')
+
+
         <!-- Recommended posts -->
-        <div class="mb-8">
+        <div class="mb-8 mt-8">
             <h2 class="text-lg sm:text-xl font-bold text-teal-500 uppercase pb-1 border-b-2 border-red-500 mb-3">
                 Recommended Posts
             </h2>
@@ -175,5 +181,5 @@
         @endforeach
 
     </div>
-        
+
 </x-app-layout>

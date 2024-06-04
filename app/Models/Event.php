@@ -11,9 +11,12 @@ class Event extends Model
 
     protected $fillable = [
         'title',
+        'slug',
+        'description',
+        'thumbnail',
         'start_date',
         'end_date',
-        'active'
+        'category_id'
     ];
 
     protected $casts = [
@@ -25,11 +28,29 @@ class Event extends Model
     {
 
         return [
+
             'title' => $this->title,
-    
+            'url' => $this->slug,
+            'description' => $this->description,
+            'thumbnail' => $this->thumbnail,
             'start' => $this->start_date->toISOString(),
-            'end' => $this->end_date->toISOString()
+            'end' => $this->end_date->toISOString(),
+            'category_id' => $this->category_id,
         ];
+    }
+
+    public function getThumbnail()
+    {
+        if (str_starts_with($this->thumbnail, 'http')) {
+            return $this->thumbnail;
+        }
+
+        return '/storage/' . $this->thumbnail;
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(category::class);
     }
     
 }

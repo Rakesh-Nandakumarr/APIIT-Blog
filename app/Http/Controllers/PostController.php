@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use App\Models\Job;
+use App\Models\Event;
+
 
 class PostController extends Controller
 {
@@ -21,6 +23,15 @@ class PostController extends Controller
 
     public function home(): View
     {
+
+
+        $now = Carbon::now();
+
+        $upcomingEvents = Event::where('start_date', '>', $now)->get();
+        $ongoingEvents = Event::where('start_date', '<=', $now)
+                              ->where('end_date', '>=', $now)
+                              ->get();
+        $previousEvents = Event::where('end_date', '<', $now)->get();
 
         // Get the currently authenticated user
         $user = Auth::user();
@@ -153,7 +164,8 @@ class PostController extends Controller
             'popularPosts',
             'recommendedPosts',
             'categories',
-            'jobpost'
+            'jobpost',
+            'upcomingEvents', 'ongoingEvents', 'previousEvents'
         ));
     }
 

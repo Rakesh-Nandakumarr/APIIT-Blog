@@ -24,4 +24,9 @@ class Category extends Model
             ->where('active', '=', 1)
             ->whereDate('published_at', '<', Carbon::now());
     }
+
+    public function event()
+    {
+        return $this->hasMany(Event::class);
+    }
 }

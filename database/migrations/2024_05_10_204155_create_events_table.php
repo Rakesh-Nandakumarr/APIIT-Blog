@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('title');
+            $table->string('slug')->unique();
+            $table->longText('description');
+            $table->string('thumbnail', 255)->nullable();
             $table->dateTime('start_date');
             $table->dateTime('end_date');
-            $table->boolean('active')->default(false);
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
         });
     }
 

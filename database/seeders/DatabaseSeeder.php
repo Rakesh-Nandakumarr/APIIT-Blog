@@ -73,8 +73,7 @@ class DatabaseSeeder extends Seeder
             ['title' => 'Business School', 'slug' => 'business-school'],
             ['title' => 'Law School', 'slug' => 'law-school'],
             ['title' => 'Student Activity Club', 'slug' => 'student-activity-club'],
-            ['title' => 'Alumni testimonial', 'slug' => 'alumni-testimonial'],
-            ['title' => 'Achievements', 'slug' => 'achievements'],
+            ['title' => 'Rotract Club', 'slug' => 'rotract-club'],
         ];
 
         foreach ($categories as $category) {

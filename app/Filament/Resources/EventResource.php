@@ -26,19 +26,28 @@ class EventResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(2048),
-                Forms\Components\DateTimePicker::make('start_date')
-                    ->required()
-                    ->label('Start Date & Time'),
-                Forms\Components\DateTimePicker::make('end_date')
-                    ->required()
-                    ->label('End Date & Time'),
-                Forms\Components\Toggle::make('active')
-                    ->required()
-
-            ]);
+                Forms\Components\Card::make()
+                ->schema([
+                    Forms\Components\TextInput::make('title')
+                        ->required()
+                        ->maxLength(2048),
+                    Forms\Components\RichEditor::make('description')
+                        ->required(),
+                    Forms\Components\DateTimePicker::make('start_date')
+                        ->required()
+                        ->label('Start Date & Time'),
+                    Forms\Components\DateTimePicker::make('end_date')
+                        ->required()
+                        ->label('End Date & Time'),
+                ])->columnSpan(8),
+                Forms\Components\Card::make()
+                ->schema([
+                Forms\Components\FileUpload::make('thumbnail')
+                    ->label('Event Poster'),
+                Forms\Components\Select::make('category_id')
+                    ->relationship('category', 'title'),
+                ])->columnSpan(4)
+                ])->columns(12);
     }
 
     public static function table(Table $table): Table
@@ -46,9 +55,6 @@ class EventResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')->searchable(['title', 'start_date', 'end_date'])->sortable(),
-                Tables\Columns\IconColumn::make('active')
-                    ->sortable()
-                    ->boolean(),
                 Tables\Columns\TextColumn::make('start_date')->sortable(),
                 Tables\Columns\TextColumn::make('end_date')->sortable(),
             ])

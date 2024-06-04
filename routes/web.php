@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EventController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestimonialController;
@@ -18,7 +20,6 @@ use App\Http\Controllers\TestimonialController;
 |---------------------------------------------------------------------------
 */
 
-Route::get('/events', \App\Http\Controllers\HomeController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -33,9 +34,11 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::resource('/jobs', JobController::class);
+Route::resource('/events', EventController::class);
 Route::resource('/Testimonials', TestimonialController::class);
 Route::get('/', [PostController::class, 'home'])->name('home');
 Route::get('/search', [PostController::class, 'search'])->name('search');
 Route::get('/about-us', [SiteController::class, 'about'])->name('about-us');
 Route::get('/category/{category:slug}', [PostController::class, 'byCategory'])->name('by-category');
 Route::get('/{post:slug}', [PostController::class, 'show'])->name('view');
+

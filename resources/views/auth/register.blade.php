@@ -37,6 +37,7 @@
                     <option value="Academic Staff">Academic Staff</option>
                     <option value="Non-Academic Staff">Non-Academic Staff</option>
                     <option value="Apiit Management">Apiit Management</option>
+                    <option value="Club Patrons">Club Patrons</option>
 
                 </select>
             </div>
